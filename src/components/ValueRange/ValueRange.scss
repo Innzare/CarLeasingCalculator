@@ -1,6 +1,19 @@
 @import 'Src/styles/variables.scss';
+@import 'Src/styles/responsive.scss';
 
 .value-range {
+  position: relative;
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 110%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
   &__title {
     font-family: 'Gilroy';
     font-style: normal;
@@ -9,6 +22,10 @@
     line-height: 20px;
     color: $grey;
     margin-bottom: 24px;
+
+    @include tablets {
+      font-size: 14px;
+    }
   }
 
   &__field {
@@ -29,6 +46,10 @@
       font-size: 30px;
       line-height: 36px;
       color: $grey;
+
+      @include tablets {
+        font-size: 22px;
+      }
     }
 
     input[type='range'] {
@@ -71,11 +92,14 @@
     padding: 0 15px;
     min-height: 54px;
     max-height: 54px;
+
+    @include tablets {
+      font-size: 22px;
+    }
   }
 
   &__percent-format {
     background-color: #e0e0e0;
-
     min-width: 70px;
     width: 70px;
 

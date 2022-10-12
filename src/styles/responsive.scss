@@ -1,0 +1,25 @@
+$lg: 1440px;
+$md: 1120px;
+$sm: 768px;
+$xs: 425px;
+
+@mixin desktop {
+  @media screen and (max-width: $lg) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+@mixin tablets {
+  @media screen and (max-width: $sm) {
+    @content;
+  }
+}
+@mixin phones {
+  @media screen and (max-width: $xs) {
+    @content;
+  }
+}

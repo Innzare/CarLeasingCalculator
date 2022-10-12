@@ -1,10 +1,15 @@
 @import 'Src/styles/variables.scss';
+@import 'Src/styles/responsive.scss';
 
 .app {
   display: flex;
   align-items: center;
   min-height: 100vh;
   padding: 47px;
+
+  @include tablets {
+    padding: 20px;
+  }
 
   .container {
     min-width: 320px;
@@ -19,6 +24,11 @@
       line-height: 90%;
       color: $black;
       margin-bottom: 30px;
+
+      @include tablets {
+        font-size: 34px;
+        max-width: 300px;
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ export default function ValueRange(props) {
     maxValue,
     step,
     onChange,
+    isLoading,
   } = props;
 
   const formatValue = isPercent ? (
@@ -23,6 +24,7 @@ export default function ValueRange(props) {
         value={`${value}`}
         onChange={(event) => onChange(event, type)}
         onBlur={(event) => onChange(event, type, true)}
+        disabled={isLoading}
       />
       %
     </div>
@@ -40,6 +42,8 @@ export default function ValueRange(props) {
 
   return (
     <div className="value-range">
+      {isLoading && <div className="value-range__overlay"></div>}
+
       <div className="value-range__title">{title}</div>
 
       <div className="value-range__field">
@@ -48,7 +52,7 @@ export default function ValueRange(props) {
           value={numberInputValue}
           onChange={(event) => onChange(event, type)}
           onBlur={(event) => onChange(event, type, true)}
-          disabled={isPercent}
+          disabled={isPercent || isLoading}
         />
 
         <div className={formatValueClasses}>{formatValue}</div>
@@ -61,6 +65,7 @@ export default function ValueRange(props) {
           max={maxValue}
           step={step}
           onChange={(event) => onChange(event, type)}
+          disabled={isLoading}
         />
       </div>
     </div>

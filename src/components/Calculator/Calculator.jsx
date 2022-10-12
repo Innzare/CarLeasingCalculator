@@ -6,12 +6,14 @@ import {
   costStep,
 } from 'Src/consts/calculator';
 import { getMonthPay, getLeaseAgreementAmount } from 'Src/helpers/calculator';
+import { leaveRequest } from 'Src/services/calculator';
 import ValueRange from 'Src/components/ValueRange';
 import FinalPrice from 'Src/components/FinalPrice';
 import Button from 'Src/components/Button';
 import './Calculator.scss';
 
 export default function Calculator() {
+  const [isLoading, setIsLoading] = useState(false);
   const [cost, setCost] = useState(initialValues.cost);
   const [initialPaymentPercent, setInitialPaymentPercent] = useState(
     initialValues.percent
@@ -73,6 +75,25 @@ export default function Calculator() {
     }
   };
 
+  const onSubmit = () => {
+    setIsLoading(true);
+
+    const data = {
+      car_coast: cost,
+      initail_payment: initialPaymentPercentValue,
+      initail_payment_percent: initialPaymentPercent,
+      lease_term: leaseTerm,
+      total_sum: leaseAgreementAmount,
+      monthly_payment_from: monthPay,
+    };
+
+    leaveRequest(data).then((response) => {
+      setIsLoading(false);
+
+      alert(response);
+    });
+  };
+
   return (
     <div className="calculator">
       <div className="calculator__row">
@@ -86,6 +107,7 @@ export default function Calculator() {
             maxValue={minMaxValues.cost.max}
             step={costStep}
             onChange={onChange}
+            isLoading={isLoading}
           />
         </div>
 
@@ -99,6 +121,7 @@ export default function Calculator() {
             minValue={minMaxValues.percent.min}
             maxValue={minMaxValues.percent.max}
             onChange={onChange}
+            isLoading={isLoading}
           />
         </div>
 
@@ -111,28 +134,28 @@ export default function Calculator() {
             minValue={minMaxValues.leaseTerm.min}
             maxValue={minMaxValues.leaseTerm.max}
             onChange={onChange}
+            isLoading={isLoading}
           />
         </div>
       </div>
 
       <div className="calculator__row">
-        <div className="calculator__col">
+        <div className="calculator-result__col">
           <FinalPrice
             title="Сумма договора лизинга"
             value={leaseAgreementAmount}
           />
         </div>
 
-        <div className="calculator__col">
+        <div className="calculator-result__col">
           <FinalPrice title="Ежемесячный платеж от" value={monthPay} />
         </div>
 
-        <div className="calculator__col">
+        <div className="calculator-result__col send-button">
           <Button
             text="Оставить заявку"
-            onClick={() => {}}
-            disabled={false}
-            isLoading={false}
+            onClick={onSubmit}
+            isLoading={isLoading}
           />
         </div>
       </div>

@@ -1,3 +1,5 @@
+@import 'Src/styles/responsive.scss';
+
 .calculator {
   display: flex;
   flex-direction: column;
@@ -6,11 +8,37 @@
   &__row {
     display: flex;
     align-items: center;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 30px;
   }
 
   &__col {
-    flex: 1 1 33.333%;
+    flex: 1 1 31%;
+
+    @include laptop {
+      flex: 1 1 100%;
+    }
+  }
+
+  &-result__col {
+    flex: 1 1 31%;
+
+    @include laptop {
+      flex: 1 1 45%;
+    }
+
+    @include tablets {
+      flex: 1 1 100%;
+    }
+  }
+
+  .send-button {
+    @include laptop {
+      flex: 0 1 50%;
+    }
+
+    @include tablets {
+      flex: 1 1 100%;
+    }
   }
 }
