@@ -2,6 +2,7 @@ const path = require('path'); // Пакет для работы с путями 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Будет авто-ски создавать html файл в папке дист с правильно указанными скриптами
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -18,7 +19,7 @@ const optimization = () => {
   };
 
   if (isProd) {
-    config.minimizer = [new OptimizeCssPlugin(), new TerserPlugin()];
+    config.minimizer = [new CssMinimizerPlugin(), new TerserPlugin()];
   }
 
   return config;

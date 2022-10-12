@@ -2,11 +2,12 @@
 
 .button {
   width: 100%;
+  min-height: 68px;
   white-space: nowrap;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px 52px 14px;
+  padding: 0 52px;
   background: $orange;
   border-radius: 40px;
   font-family: 'Nekst-Black';

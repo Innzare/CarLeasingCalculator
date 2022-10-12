@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from 'Src/components/Loader';
 import './Button.scss';
 
 export default function Button(props) {
@@ -7,7 +8,7 @@ export default function Button(props) {
   return (
     <div>
       <button className="button" onClick={onClick} disabled={disabled}>
-        {isLoading ? 'Loading' : text}
+        {isLoading ? <Loader /> : text}
       </button>
     </div>
   );
