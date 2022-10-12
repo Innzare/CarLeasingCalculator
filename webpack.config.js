@@ -1,5 +1,5 @@
-const path = require('path'); // Пакет для работы с путями в Node
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // Будет авто-ски создавать html файл в папке дист с правильно указанными скриптами
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -12,7 +12,7 @@ const isProd = !isDev;
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: 'all', // Настройка будет выносить импортируемые одинковые библиотеки из разных файлов в один общий vendor файл
+      chunks: 'all',
     },
     runtimeChunk: 'single',
   };
@@ -25,7 +25,18 @@ const optimization = () => {
 };
 
 const cssLoaders = (extra) => {
-  const loaders = [MiniCssExtractPlugin.loader, 'css-loader'];
+  const loaders = [
+    MiniCssExtractPlugin.loader,
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: [['postcss-preset-env']],
+        },
+      },
+    },
+  ];
 
   if (extra) {
     loaders.push(extra);
@@ -65,16 +76,15 @@ const dirName = (pathToFile) => {
 
 module.exports = {
   target: 'web',
-  context: dirName('src'), // Настройка указывает где хранятся исходники проекта. Поэтому к примеру в entry.main не нужно в пути указывать src
-  mode: 'development', // development or production mode
+  context: dirName('src'),
+  mode: 'development',
 
   entry: {
-    // Входные файлы - Chunks(сборники скриптов)
     main: ['@babel/polyfill', './index'],
   },
 
   output: {
-    filename: fileName('js', 'scripts/'), // Паттерн для создания имени для выходных файлов. Зависит от имени чанка
+    filename: fileName('js', 'scripts/'),
     path: dirName('dist'),
     clean: true,
   },
@@ -101,7 +111,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../index.html', // Путь до основного html файла который будет создаваться в dist. К нему будут присоединены чанки указанные в entry
+      template: '../index.html',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd,
@@ -126,7 +136,6 @@ module.exports = {
 
   module: {
     rules: [
-      // Здесь указываются лоадеры
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
@@ -143,8 +152,8 @@ module.exports = {
         use: babelLoaders(['@babel/preset-react', '@babel/preset-typescript']),
       },
       {
-        test: /\.css$/, // Если встречается указанное расширение файлов
-        use: cssLoaders(), // То использовать указанный здесь лоадер. Обработка файлов будет идти справа на лево
+        test: /\.css$/,
+        use: cssLoaders(),
       },
       {
         test: /\.s[ac]ss$/,
@@ -152,7 +161,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp|webp2)$/,
-        type: 'asset/resource', // В webpack 5 не нужен больше file-loader для шрифтов картинок и тд. См. Asset Modules в док.
+        type: 'asset/resource',
         generator: {
           filename: 'assets/img/[name][ext]',
         },

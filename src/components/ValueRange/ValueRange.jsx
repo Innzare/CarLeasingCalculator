@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { formatNumber } from 'Src/helpers/calculator';
 import './ValueRange.scss';
 
@@ -16,6 +16,23 @@ export default function ValueRange(props) {
     onChange,
     isLoading,
   } = props;
+
+  const range = useRef(null);
+
+  const getPercent = useCallback(
+    (value) => {
+      return Math.round(((value - minValue) / (maxValue - minValue)) * 100);
+    },
+    [minValue, maxValue]
+  );
+
+  useEffect(() => {
+    const percent = getPercent(value);
+
+    if (range.current) {
+      range.current.style.width = `${percent}%`;
+    }
+  }, [value, getPercent]);
 
   const formatValue = isPercent ? (
     <div className="percent-wrapper">
@@ -57,16 +74,20 @@ export default function ValueRange(props) {
 
         <div className={formatValueClasses}>{formatValue}</div>
 
-        <input
-          type="range"
-          className="value-range-input"
-          value={value}
-          min={minValue}
-          max={maxValue}
-          step={step}
-          onChange={(event) => onChange(event, type)}
-          disabled={isLoading}
-        />
+        <div className="value-range-input-wrapper">
+          {!isLoading && <div className="slide-range" ref={range}></div>}
+
+          <input
+            type="range"
+            className="value-range-input"
+            value={value}
+            min={minValue}
+            max={maxValue}
+            step={step}
+            onChange={(event) => onChange(event, type)}
+            disabled={isLoading}
+          />
+        </div>
       </div>
     </div>
   );
