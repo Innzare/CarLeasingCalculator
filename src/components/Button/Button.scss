@@ -1,0 +1,41 @@
+@import 'Src/styles/variables.scss';
+
+.button {
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 52px 14px;
+  background: $orange;
+  border-radius: 40px;
+  font-family: 'Nekst-Black';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: $white;
+  cursor: pointer;
+
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: $black;
+  }
+
+  &:active {
+    background: $grey;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+
+    &:hover {
+      background: $orange;
+    }
+
+    &:active {
+      background: $orange;
+    }
+  }
+}

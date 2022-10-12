@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gilroy'),
+    url('../assets/fonts/Gilroy/Regular/Gilroy-Regular.eot') format('eot'),
+    url('../assets/fonts/Gilroy/Regular/Gilroy-Regular.ttf') format('ttf'),
+    url('../assets/fonts/Gilroy/Regular/Gilroy-Regular.woff') format('woff'),
+    url('../assets/fonts/Gilroy/Regular/Gilroy-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Gilroy-bold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Gilroy-bold'),
+    url('../assets/fonts/Gilroy/Bold/Gilroy-Bold.eot') format('eot'),
+    url('../assets/fonts/Gilroy/Bold/Gilroy-Bold.ttf') format('ttf'),
+    url('../assets/fonts/Gilroy/Bold/Gilroy-Bold.woff') format('woff'),
+    url('../assets/fonts/Gilroy/Bold/Gilroy-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nekst';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Nekst'),
+    url('../assets/fonts/Nekst/Regular/Nekst-Regular.eot') format('eot'),
+    url('../assets/fonts/Nekst/Regular/Nekst-Regular.ttf') format('ttf'),
+    url('../assets/fonts/Nekst/Regular/Nekst-Regular.woff') format('woff'),
+    url('../assets/fonts/Nekst/Regular/Nekst-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nekst-bold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Nekst-bold'),
+    url('../assets/fonts/Nekst/Bold/Nekst-Bold.eot') format('eot'),
+    url('../assets/fonts/Nekst/Bold/Nekst-Bold.ttf') format('ttf'),
+    url('../assets/fonts/Nekst/Bold/Nekst-Bold.woff') format('woff'),
+    url('../assets/fonts/Nekst/Bold/Nekst-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nekst-black';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Nekst-black'),
+    url('../assets/fonts/Nekst/Black/Nekst-Black.eot') format('eot'),
+    url('../assets/fonts/Nekst/Black/Nekst-Black.ttf') format('ttf'),
+    url('../assets/fonts/Nekst/Black/Nekst-Black.woff') format('woff'),
+    url('../assets/fonts/Nekst/Black/Nekst-Black.woff2') format('woff2');
+}

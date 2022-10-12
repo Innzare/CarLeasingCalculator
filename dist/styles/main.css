@@ -1,0 +1,20 @@
+/*!**************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./styles/style.scss ***!
+  \**************************************************************************************************************/
+@font-face {
+  font-family: 'Roboto';
+  src: url(../assets/fonts/Roboto-Black.ttf) format("truetype"); }
+
+body {
+  font-family: 'Roboto', sans-serif; }
+
+.container {
+  max-width: 1000px;
+  padding-top: 2rem;
+  margin: 0 auto; }
+  .container h1 {
+    text-align: center;
+    color: blue; }
+
+
+/*# sourceMappingURL=main.css.map*/

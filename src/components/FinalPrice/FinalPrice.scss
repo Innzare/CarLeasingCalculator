@@ -1,0 +1,23 @@
+@import 'Src/styles/variables.scss';
+
+.final-price {
+  &__title {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: $grey;
+    margin-bottom: 24px;
+  }
+
+  &__value {
+    font-family: 'Nekst-Black';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 54px;
+    line-height: 90%;
+    color: #333333;
+    white-space: nowrap;
+  }
+}

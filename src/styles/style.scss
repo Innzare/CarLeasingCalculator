@@ -1,0 +1,25 @@
+@import './fonts.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  background-color: inherit;
+  border: none;
+  outline: 0;
+
+  &:focus {
+    border-color: none;
+  }
+}
+
+button {
+  border: none;
+}
+
+body {
+  font-family: 'Nekst';
+}
